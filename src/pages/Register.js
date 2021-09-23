@@ -12,10 +12,7 @@ const Register = ({ history }) => {
   const { registering } = useSelector((state) => state.users);
   const dispatch = useDispatch();
 
-  /**
-   * Clears the error message from text input
-   * @param {*} event
-   */
+  
   const onChange = (event) => {
     const { name } = event.target;
     const errors = { ...error };

@@ -69,7 +69,7 @@ const Login = ({ history, location }) => {
           Sign in
         </Button>
       </div>
-      <div className="pt-3 pb-3 align-left">
+      <div className="pt-3 pb-3 align-center">
         Or <Link to="/register">Register</Link>
       </div>
     </div>

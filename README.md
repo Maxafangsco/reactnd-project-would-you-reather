@@ -1,6 +1,35 @@
 # Would You Rather Project
+"Would You Rather?" is a game where a user is asked a question in the form Would you rather "option A" or "option B" The user can only select one answer. Selecting neither or both is not allowed.
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+It also allows a user to submit new polling questions. The users enters option A and option B of the question. Empty questions are not allowed. The user can also view the scores from all members on leaderboard.
+
+Table of contents
+Dependencies
+Prerequisites
+To install dependencies run
+Starting the application
+Dependencies
+Node - A Javascript runtime environment.
+React - A Javascript library for building user interfaces.
+A package manager - yarn or NPM
+Prerequisites
+Clone the repository:
+
+git clone https://github.com/Maxafangsco/reactnd-project-would-you-reather
+Then change to the project directory:
+
+cd would-you-rather
+To install the dependencies run:
+npm install
+This will install all the dependencies defined in the package.json file inside the project root directory.
+
+Starting the application
+npm start
+This will run the application and it can be accessed at:
+
+localhost:3000
+
+# Backend
 
 The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
 

@@ -46,15 +46,6 @@ const questionReducer = (state= initialState, action) =>{
                 error: action.error,
             };
         case SAVE_QUESTIONS_SUCCESS :
-            // return{
-            //     ...state,
-            //     requesting:false,
-            //     question : {
-            //         ...state.question, 
-            //         [action.id]: action.id,
-            //     },
-            // };
-
             return {
                 ...state,
                 requesting: false,

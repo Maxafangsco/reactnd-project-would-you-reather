@@ -36,17 +36,20 @@ switch(action.type){
         };
 
     case SAVE_USER_QUESTIONS :
-        const {author} = action.question
-        return{
-            ...state,
-            users:{
-                ...state.users,
-                [author]:{
-                    ...state.users[author].questions,
-                    ...[action.id]
-                }
-            }
-        }
+        const { author } = action.payload;
+        return {
+          ...state,
+          users: {
+            ...state.users,
+            [author]: {
+              ...state.users[author],
+              questions: [
+                ...state.users[author].questions,
+                ...[action.payload.id],
+              ],
+            },
+          },
+        };
     case ADD_USER_REQUEST:
         return {
             ...state,

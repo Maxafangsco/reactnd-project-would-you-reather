@@ -16,21 +16,21 @@ export const SAVE_ANSWER_FAILED = 'SAVE_ANSWER_FAILED'
 export const SAVE_ANSWER_SUCCESS = 'SAVE_ANSWER_SUCCESS'
 
 
-export const getQuestionsRequest = (promise) => {
+const getQuestionsRequest = (promise) => {
   return {
     type: GET_QUESTIONS_REQUEST,
     promise
   }
 }
 
-export const getQuestionsSuccess = (question) => {
+ const getQuestionsSuccess = (question) => {
    return {
     type: GET_QUESTIONS_SUCCESS,
     question
    }
 }
 
-export const getQuestionsFailed = (error) => {
+ const getQuestionsFailed = (error) => {
    return{
     type: GET_QUESTIONS_FAILED,
     error
@@ -51,67 +51,66 @@ export const getQuestions = () => {
     }
 }
 
-export const saveQuestionRequest = (question) =>{
+ const saveQuestionRequest = (question) =>{
     return {
         type: SAVE_QUESTIONS_REQUEST,
-        question
+        payload: question,
     }
 }
 
-export const saveQuestionSuccess = (question) =>{
+const saveQuestionSuccess = (question) =>{
     return {
         type: SAVE_QUESTIONS_SUCCESS,
-        question
+        payload: question
     }
 }
 
-export const saveUserQuestion = (question) =>{
+ const saveUserQuestion = (question) =>{
     return {
         type: SAVE_USER_QUESTIONS,
-        question
-    }
-}
-
-export const saveQuestionFailed = (error) =>{
-    return {
-        type: SAVE_QUESTIONS_FAILED,
-        error
-    }
-}
-
-export const saveQuestion = (question) =>{
-    return (dispatch) =>{
-    const promise =  _saveQuestion(question);
-    dispatch(saveQuestionRequest(promise));
-    promise
-    .then((question) =>{
-        dispatch(saveQuestionSuccess(question))
-        dispatch(saveUserQuestion(question))
-    })
-    .catch((error) =>{
-        dispatch(saveQuestionFailed(error))
-    })
-
-    return promise;
+        payload: question
     };
 };
 
-export const saveAnswerRequest = (promise) =>{
+ const saveQuestionFailed = (error) =>{
+    return {
+        type: SAVE_QUESTIONS_FAILED,
+        payload: error
+    }
+}
+
+export const saveQuestion = (question) => {
+    return (dispatch) => {
+      const promise = _saveQuestion(question);
+      dispatch(saveQuestionRequest(promise));
+      promise
+        .then((question) => {
+          dispatch(saveQuestionSuccess(question));
+          dispatch(saveUserQuestion(question));
+        })
+        .catch((error) => {
+          dispatch(saveQuestionFailed(error));
+        });
+      return promise;
+    };
+  };
+
+ const saveAnswerRequest = (promise) =>{
     return {
         type: SAVE_ANSWER_REQUEST,
-        promise
+        payload : promise
 
     }
 }
 
-export const saveAnswerSuccess = (answer) =>{
+ const saveAnswerSuccess = (answer) =>{
     return {
         type: SAVE_ANSWER_SUCCESS,
         answer
     }
 }
 
-export const saveAnswerFailed = (error) =>{
+ const saveAnswerFailed = (error) =>{
     return {
         type: SAVE_ANSWER_SUCCESS,
         error
@@ -129,7 +128,7 @@ export const saveAnswer = (answer) =>{
             getUsers()(dispatch)
         })
         .catch((error) =>{
-            dispatch(saveQuestionFailed(error))
+            dispatch(saveAnswerFailed(error))
         });
         return promise;
     };
